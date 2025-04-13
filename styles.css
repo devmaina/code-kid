@@ -1,38 +1,65 @@
+/* Define CSS variables for colors */
+:root {
+    --primary-purple: #6a0dad;
+    --bright-yellow: #ffcc00;
+    --darker-yellow: #ff9900;
+    --light-blue: #e0f7fa;
+    --background-gray: #f4f4f9;
+    --white: #fff;
+    --text-white: white;
+}
+
+/* General styles */
 body {
-    font-family: 'Nunito', 'Rubik', Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 100vh;
 }
 
 nav {
-    background-color: #6a0dad; /* Bright purple */
-    width: 100%;
-    padding: 10px;
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-#school-logo {
-    height: 50px;
-    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
 }
 
 nav h1 {
-    color: white;
-    font-size: 24px;
+    font-size: 1.5rem;
     margin: 0;
 }
 
+nav button {
+    background-color: #ffffff;
+    color: #4CAF50;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+nav button:hover {
+    background-color: #f1f1f1;
+}
+
+#school-logo {
+    font-size: 50px;
+    margin: 0 auto;
+    display: block;
+    color: var(--bright-yellow);
+    height: 40px;
+}
+
 #next-btn {
-    margin-top: 10px;
+    margin: 20px auto 0;
+    display: block;
     padding: 10px 20px;
-    background-color: #ffcc00; /* Bright yellow */
+    background-color: var(--bright-yellow);
     border: none;
     font-size: 16px;
     cursor: pointer;
@@ -42,12 +69,12 @@ nav h1 {
 
 #next-btn:hover {
     transform: scale(1.1);
-    background-color: #ff9900; /* Darker yellow */
+    background-color: var(--darker-yellow);
 }
 
 .instructions {
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--white);
     margin: 20px 0;
     border-radius: 5px;
     width: 80%;
@@ -57,23 +84,115 @@ nav h1 {
 
 #workspace {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
-    margin-bottom: 20px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+#editor-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.editor-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.editor-section:last-child {
+    border-right: none;
+}
+
+.editor-title {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+}
+
+.editor {
+    flex: 1;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+#preview {
+    flex: 1;
+    border: none;
+    background-color: #f9f9f9;
 }
 
 #editor-container, #output-container {
-    flex: 1;
-    background-color: #e0f7fa; /* Light baby blue */
+    flex: 0 0 34vw; /* Set width to 34vw */
+    height: 300px; /* Set a reasonable height */
+    background-color: var(--light-blue);
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#editor {
+    height: 100%;
+    width: 100%;
 }
 
 canvas {
+    height: 100%;
     width: 100%;
-    height: 300px;
     border: 1px solid #ccc;
     border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    #editor-container, #output-container {
+        flex: 1 1 100%; /* Stacks containers vertically */
+    }
+
+    #editor {
+        height: 300px;
+    }
+
+    canvas {
+        height: 300px;
+    }
+}
+
+/* Add media query for phone optimization */
+@media (max-width: 600px) {
+    body {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #school-logo {
+        font-size: 40px;
+        height: auto;
+    }
+
+    #next-btn {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .instructions, #workspace {
+        width: 100%;
+    }
+
+    canvas {
+        height: 200px;
+    }
 }
