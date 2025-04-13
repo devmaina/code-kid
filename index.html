@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Coding Quickly</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        require.config({ paths: { vs: 'https://unpkg.com/monaco-editor/min/vs' } });
+        require(['vs/editor/editor.main'], function() {
+            var editor = monaco.editor.create(document.getElementById('editor'), {
+                value: '/* Start coding! */',
+                language: 'javascript',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <img src="https://via.placeholder.com/50" alt="School Logo" id="school-logo">
+        <h1>Learn Coding Quickly</h1>
+        <button id="next-btn">Next</button>
+    </nav>
+    <main>
+        <div class="instructions">
+            <p id="task-instruction">Write a function to reverse a string.</p>
+        </div>
+        <div id="workspace">
+            <div id="editor-container">
+                <div id="editor" style="height: 300px;"></div>
+            </div>
+            <div id="output-container">
+                <canvas id="output"></canvas>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
