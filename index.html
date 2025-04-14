@@ -5,77 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Learn to Code</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-        }
-
-        #editor-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .editor-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid #ccc;
-            overflow: hidden;
-        }
-
-        .editor-section:last-child {
-            border-right: none;
-        }
-
-        .editor-title {
-            font-weight: bold;
-            text-align: center;
-            padding: 5px;
-            background-color: #f4f4f4;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .editor {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        #preview {
-            flex: 1;
-            border: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <span class="material-icons" id="school-logo" >computer</span>
-        <h1> Kids like and Learn Coding Quickly</h1>
-        <button id="next-btn">Next</button>
+        <span class="material-icons" id="school-logo">computer</span>
+        <h1>Kids Like and Learn Coding Quickly</h1>
+        <button id="menu-button" class="icon-button" aria-label="Menu">
+            <span class="material-icons">menu</span>
+        </button>
+        <button id="run-btn">Run Code</button> <button id="next-btn">Next Task</button>
     </nav>
-    <div id="editor-container">
-        <div class="editor-section">
-            <div class="editor-title">Structure (HTML)</div>
-            <div id="structure-editor" class="editor"></div>
+
+    <div id="task-instruction">Loading task...</div>
+
+    <div id="main-container">
+        <div id="editor-container">
+            <div class="editor-section">
+                <div class="editor-title">Structure (HTML)</div>
+                <div id="structure-editor" class="editor"></div>
+            </div>
+            <div class="editor-section">
+                <div class="editor-title">Style (CSS)</div>
+                <div id="style-editor" class="editor"></div>
+            </div>
+            <div class="editor-section">
+                <div class="editor-title">Interaction (JavaScript)</div>
+                <div id="interaction-editor" class="editor"></div>
+            </div>
         </div>
-        <div class="editor-section">
-            <div class="editor-title">Style (CSS)</div>
-            <div id="style-editor" class="editor"></div>
-        </div>
-        <div class="editor-section">
-            <div class="editor-title">Interaction (JavaScript)</div>
-            <div id="interaction-editor" class="editor"></div>
+
+        <div id="output-container">
+            <h1 id="output-header">Result</h1>
+            <iframe id="output-slot"></iframe>
         </div>
     </div>
-    <iframe id="preview"></iframe>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
-    <script src="https://unpkg.com/monaco-editor/min/vs/loader.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
