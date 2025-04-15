@@ -85,6 +85,7 @@ function runCode() {
                 </style>
             </head>
             <body>
+           
                 ${htmlCode}
                 <script>
                     try {
@@ -168,6 +169,21 @@ function initializeEditors(monaco) {
 }
 
 /**
+ * Determines if a color is dark or bright.
+ * @param {string} color - The color in hex format (e.g., "#RRGGBB").
+ * @returns {boolean} - True if the color is dark, false otherwise.
+ */
+function isColorDark(color) {
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    // Calculate luminance
+    const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+    return luminance < 128; // Dark if luminance is less than 128
+}
+
+/**
  * Shows the K12 class menu.
  */
 function showK12Menu() {
@@ -179,17 +195,29 @@ function showK12Menu() {
     menuContent.id = 'menu-content';
 
     const classes = [
-        { class: 'Kindergarten', age: '5-6 years' }, { class: 'Grade 1', age: '6-7 years' },
-        { class: 'Grade 2', age: '7-8 years' }, { class: 'Grade 3', age: '8-9 years' },
-        { class: 'Grade 4', age: '9-10 years' }, { class: 'Grade 5', age: '10-11 years' },
-        { class: 'Grade 6', age: '11-12 years' }, { class: 'Grade 7', age: '12-13 years' },
-        { class: 'Grade 8', age: '13-14 years' }, { class: 'Grade 9', age: '14-15 years' },
-        { class: 'Grade 10', age: '15-16 years' }
+        { class: 'Kindergarten', age: '5-6 years', color: 'var(--clr-primary-lighter)' },
+        { class: 'Grade 1', age: '6-7 years', color: 'var(--clr-secondary)' },
+        { class: 'Grade 2', age: '7-8 years', color: 'var(--clr-accent)' },
+        { class: 'Grade 3', age: '8-9 years', color: 'var(--clr-primary)' },
+        { class: 'Grade 4', age: '9-10 years', color: 'var(--clr-secondary-darker)' },
+        { class: 'Grade 5', age: '10-11 years', color: 'var(--clr-primary-darker)' },
+        { class: 'Grade 6', age: '11-12 years', color: 'var(--clr-primary-lighter)' },
+        { class: 'Grade 7', age: '12-13 years', color: 'var(--clr-secondary)' },
+        { class: 'Grade 8', age: '13-14 years', color: 'var(--clr-accent)' },
+        { class: 'Grade 9', age: '14-15 years', color: 'var(--clr-primary)' },
+        { class: 'Grade 10', age: '15-16 years', color: 'var(--clr-secondary-darker)' }
     ];
 
-    classes.forEach(({ class: className, age }) => {
+    // Update the menu to dynamically set `data-dark` attribute
+    classes.forEach(({ class: className, age, color }) => {
         const item = document.createElement('div');
         item.textContent = `${className} (${age})`;
+        item.style.backgroundColor = color;
+        item.setAttribute('data-dark', isColorDark(getComputedStyle(item).backgroundColor)); // Set data-dark attribute
+        item.addEventListener('click', () => {
+            updateUIForClass({ class: className, age, color });
+            menuContent.remove(); // Close the menu after selection
+        });
         menuContent.appendChild(item);
     });
 
@@ -206,6 +234,20 @@ function showK12Menu() {
     setTimeout(() => document.addEventListener('click', closeMenuListener), 0);
 }
 
+/**
+ * Updates the UI based on the selected class.
+ * @param {Object} selectedClass The selected class object.
+ */
+function updateUIForClass(selectedClass) {
+    const header = document.querySelector('nav');
+    if (header) {
+        header.style.backgroundColor = selectedClass.color; // Change header color
+    }
+
+    if (taskInstructionEl) {
+        taskInstructionEl.textContent = `Welcome to ${selectedClass.class} (${selectedClass.age})!`;
+    }
+}
 
 // --- Initialization and Event Listeners ---
 

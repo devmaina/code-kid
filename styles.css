@@ -1,3 +1,25 @@
+/* Define color variables globally */
+:root {
+    --clr-primary: #4B0082; /* Dark Purple (Indigo) */
+    --clr-primary-darker: #3A006A; /* Darker Purple for hover */
+    --clr-primary-lighter: #E0C8F5; /* Lighter Purple for backgrounds/borders */
+
+    --clr-secondary: #E1AD01; /* Mustard Yellow */
+    --clr-secondary-darker: #C89600; /* Darker Mustard Yellow */
+
+    --clr-accent: #FF1493; /* Sharp Pink (DeepPink) */
+
+    --clr-text-on-primary: #ffffff; /* White text on dark purple */
+    --clr-text-on-secondary: #333333; /* Dark text on yellow */
+    --clr-text-dark: #333333;
+    --clr-text-light: #ffffff;
+    --clr-background-main: #f4f7f6;
+    --clr-background-card: #ffffff;
+    --clr-background-header: #f8f9fa;
+    --clr-border-light: #ccc;
+    --clr-border-medium: #a0a0a0; /* Added for variation */
+}
+
 body {
     font-family: 'Nunito', sans-serif;
     margin: 0;
@@ -5,15 +27,16 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: var(--clr-background-main);
+    color: var(--clr-text-dark);
 }
 
 nav {
     display: flex;
     align-items: center;
-    background-color: #4a90e2; /* Primary color */
-    color: white;
+    /* Using Dark Purple */
+    background-color: var(--clr-primary);
+    color: var(--clr-text-on-primary);
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -22,7 +45,7 @@ nav h1 {
     font-family: 'Rubik', sans-serif;
     font-size: 1.5em;
     margin: 0;
-    flex-grow: 1; /* Pushes buttons to the right */
+    flex-grow: 1;
     margin-left: 15px;
 }
 
@@ -31,8 +54,9 @@ nav #school-logo {
 }
 
 nav button {
-    background-color: #357abd; /* Slightly darker blue */
-    color: white;
+    /* Base button style - slightly darker purple */
+    background-color: var(--clr-primary-darker);
+    color: var(--clr-text-on-primary);
     border: none;
     padding: 8px 15px;
     margin-left: 10px;
@@ -43,8 +67,29 @@ nav button {
 }
 
 nav button:hover {
-    background-color: #2a6ca0; /* Even darker blue */
+     /* Even darker on hover */
+    background-color: var(--clr-primary); /* Use main primary on hover for contrast */
 }
+
+/* Specific button overrides */
+#run-btn {
+    /* Using Mustard Yellow */
+    background-color: var(--clr-secondary);
+    color: var(--clr-text-on-secondary); /* Dark text on yellow */
+}
+#run-btn:hover {
+    background-color: var(--clr-secondary-darker);
+}
+
+#next-btn {
+     /* Using Sharp Pink Accent */
+     background-color: var(--clr-accent);
+     color: var(--clr-text-on-primary); /* White text on pink */
+}
+#next-btn:hover {
+    opacity: 0.85; /* Simple hover effect for pink */
+}
+
 
 nav .icon-button {
     background: none;
@@ -53,66 +98,68 @@ nav .icon-button {
 }
 nav .icon-button .material-icons {
     vertical-align: middle;
+    color: var(--clr-text-on-primary); /* Ensure icon color matches text */
 }
 
 
 #task-instruction {
     padding: 15px 20px;
-    background-color: #eaf2fb; /* Light blue background */
-    border-bottom: 1px solid #d0dfee;
+    /* Using Light Purple background, Dark Purple text/border */
+    background-color: var(--clr-primary-lighter);
+    border-bottom: 1px solid var(--clr-primary); /* Use primary color for border */
     font-size: 1.1em;
     font-weight: bold;
-    color: #357abd;
+    color: var(--clr-primary);
 }
 
 #main-container {
     display: flex;
-    flex-grow: 1; /* Takes remaining height */
-    overflow: hidden; /* Prevent scrolling issues */
+    flex-grow: 1;
+    overflow: hidden;
     padding: 10px;
-    gap: 10px; /* Space between editor and output */
+    gap: 10px;
 }
 
 #editor-container {
     display: flex;
-    flex-direction: column; /* Stack editors vertically */
-    flex-basis: 60%; /* Editors take 60% width */
-    gap: 10px; /* Space between editor sections */
-    overflow: hidden; /* Needed for flex children */
+    flex-direction: column;
+    flex-basis: 60%;
+    gap: 10px;
+    overflow: hidden;
 }
 
 .editor-section {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Each section takes equal space */
-    background-color: #ffffff;
-    border: 1px solid #ccc;
+    flex-grow: 1;
+    background-color: var(--clr-background-card);
+    border: 1px solid var(--clr-border-light);
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    min-height: 0; /* Important for flexbox shrinking */
+    min-height: 0;
 }
 
 .editor-title {
-    background-color: #f8f9fa; /* Light gray header for editors */
+    background-color: var(--clr-background-header);
     padding: 8px 12px;
     font-weight: bold;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--clr-border-light);
     border-radius: 4px 4px 0 0;
     font-size: 0.9em;
+    color: var(--clr-text-dark); /* Ensure text is dark on light header */
 }
 
 .editor {
-    flex-grow: 1; /* Editor div takes remaining space in section */
-    min-height: 100px; /* Minimum height for visibility */
-    /* Monaco Editor will fill this */
+    flex-grow: 1;
+    min-height: 100px;
 }
 
 #output-container {
     display: flex;
     flex-direction: column;
-    flex-basis: 40%; /* Output takes 40% width */
-    background-color: #ffffff;
-    border: 1px solid #ccc;
+    flex-basis: 40%;
+    background-color: var(--clr-background-card);
+    border: 1px solid var(--clr-border-light);
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
@@ -121,32 +168,70 @@ nav .icon-button .material-icons {
     font-size: 1.2em;
     margin: 0;
     padding: 10px 15px;
-    background-color: #f8f9fa; /* Match editor titles */
-    border-bottom: 1px solid #ccc;
+    background-color: var(--clr-background-header);
+    border-bottom: 1px solid var(--clr-border-light);
     border-radius: 4px 4px 0 0;
     text-align: center;
+    color: var(--clr-text-dark); /* Ensure text is dark on light header */
 }
 
 #output-slot {
-    flex-grow: 1; /* Iframe takes remaining space */
-    border: none; /* Remove default iframe border */
+    flex-grow: 1;
+    border: none;
     width: 100%;
 }
 
 /* Basic Menu Styling (for K12 example) */
 #menu-content {
     position: absolute;
-    top: 60px; /* Adjust as needed */
+    top: 60px;
     right: 20px;
-    background: white;
-    border: 1px solid #ccc;
+    background: var(--clr-background-card); /* Use card background */
+    border: 1px solid var(--clr-border-light);
     padding: 10px;
     border-radius: 5px;
+    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
+/* Menu item styling with dynamic text color */
 #menu-content div {
-     padding: 5px 0;
-     cursor: default; /* Or pointer if they are clickable */
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+    background-color: var(--clr-primary); /* Example background color */
+    color: var(--clr-text-light); /* Default to light text */
 }
+
+/* Adjust text color dynamically based on background brightness */
+#menu-content div[data-dark="true"] {
+    color: var(--clr-text-light); /* Bright text for dark backgrounds */
+}
+
+#menu-content div[data-dark="false"] {
+    color: var(--clr-text-dark); /* Dark text for bright backgrounds */
+}
+
+/* Hover effect for menu items */
+#menu-content div:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Example fallback colors for menu items */
+#menu-content div:nth-child(1) { background-color: var(--clr-primary-lighter); }
+#menu-content div:nth-child(2) { background-color: var(--clr-secondary); }
+#menu-content div:nth-child(3) { background-color: var(--clr-accent); }
+#menu-content div:nth-child(4) { background-color: var(--clr-primary); }
+#menu-content div:nth-child(5) { background-color: var(--clr-secondary-darker); }
+#menu-content div:nth-child(6) { background-color: var(--clr-primary-darker); }
+#menu-content div:nth-child(7) { background-color: var(--clr-primary-lighter); }
+#menu-content div:nth-child(8) { background-color: var(--clr-secondary); }
+#menu-content div:nth-child(9) { background-color: var(--clr-accent); }
+#menu-content div:nth-child(10) { background-color: var(--clr-primary); }
+#menu-content div:nth-child(11) { background-color: var(--clr-secondary-darker); }
