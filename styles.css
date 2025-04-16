@@ -1,23 +1,10 @@
-/* Define color variables globally */
 :root {
-    --clr-primary: #4B0082; /* Dark Purple (Indigo) */
-    --clr-primary-darker: #3A006A; /* Darker Purple for hover */
-    --clr-primary-lighter: #E0C8F5; /* Lighter Purple for backgrounds/borders */
-
-    --clr-secondary: #E1AD01; /* Mustard Yellow */
-    --clr-secondary-darker: #C89600; /* Darker Mustard Yellow */
-
-    --clr-accent: #FF1493; /* Sharp Pink (DeepPink) */
-
-    --clr-text-on-primary: #ffffff; /* White text on dark purple */
-    --clr-text-on-secondary: #333333; /* Dark text on yellow */
-    --clr-text-dark: #333333;
-    --clr-text-light: #ffffff;
-    --clr-background-main: #f4f7f6;
-    --clr-background-card: #ffffff;
-    --clr-background-header: #f8f9fa;
-    --clr-border-light: #ccc;
-    --clr-border-medium: #a0a0a0; /* Added for variation */
+    --clr-primary: #007bff;
+    --clr-secondary: #ff4b9f;
+    --clr-accent: plum; /* Updated to a lighter purple */
+    --clr-background-main: aliceblue;
+    --clr-primary-lighter: yellow;
+    --clr-text-light: #fff;
 }
 
 body {
@@ -34,7 +21,6 @@ body {
 nav {
     display: flex;
     align-items: center;
-    /* Using Dark Purple */
     background-color: var(--clr-primary);
     color: var(--clr-text-on-primary);
     padding: 10px 20px;
@@ -54,7 +40,6 @@ nav #school-logo {
 }
 
 nav button {
-    /* Base button style - slightly darker purple */
     background-color: var(--clr-primary-darker);
     color: var(--clr-text-on-primary);
     border: none;
@@ -67,46 +52,42 @@ nav button {
 }
 
 nav button:hover {
-     /* Even darker on hover */
-    background-color: var(--clr-primary); /* Use main primary on hover for contrast */
+    background-color: var(--clr-primary);
 }
 
-/* Specific button overrides */
 #run-btn {
-    /* Using Mustard Yellow */
     background-color: var(--clr-secondary);
-    color: var(--clr-text-on-secondary); /* Dark text on yellow */
+    color: var(--clr-text-on-secondary);
 }
+
 #run-btn:hover {
     background-color: var(--clr-secondary-darker);
 }
 
 #next-btn {
-     /* Using Sharp Pink Accent */
-     background-color: var(--clr-accent);
-     color: var(--clr-text-on-primary); /* White text on pink */
-}
-#next-btn:hover {
-    opacity: 0.85; /* Simple hover effect for pink */
+    background-color: var(--clr-accent);
+    color: var(--clr-text-on-primary);
 }
 
+#next-btn:hover {
+    opacity: 0.85;
+}
 
 nav .icon-button {
     background: none;
     padding: 5px;
     min-width: auto;
 }
+
 nav .icon-button .material-icons {
     vertical-align: middle;
-    color: var(--clr-text-on-primary); /* Ensure icon color matches text */
+    color: var (--clr-text-on-primary);
 }
-
 
 #task-instruction {
     padding: 15px 20px;
-    /* Using Light Purple background, Dark Purple text/border */
     background-color: var(--clr-primary-lighter);
-    border-bottom: 1px solid var(--clr-primary); /* Use primary color for border */
+    border-bottom: 1px solid var(--clr-primary);
     font-size: 1.1em;
     font-weight: bold;
     color: var(--clr-primary);
@@ -146,7 +127,7 @@ nav .icon-button .material-icons {
     border-bottom: 1px solid var(--clr-border-light);
     border-radius: 4px 4px 0 0;
     font-size: 0.9em;
-    color: var(--clr-text-dark); /* Ensure text is dark on light header */
+    color: var(--clr-text-dark);
 }
 
 .editor {
@@ -159,9 +140,10 @@ nav .icon-button .material-icons {
     flex-direction: column;
     flex-basis: 40%;
     background-color: var(--clr-background-card);
-    border: 1px solid var(--clr-border-light);
+    border: 2px solid var(--clr-border-light); /* Ensure border is visible */
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Slight shadow for better visibility */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 #output-header {
@@ -172,30 +154,29 @@ nav .icon-button .material-icons {
     border-bottom: 1px solid var(--clr-border-light);
     border-radius: 4px 4px 0 0;
     text-align: center;
-    color: var(--clr-text-dark); /* Ensure text is dark on light header */
+    color: var(--clr-text-dark);
 }
 
 #output-slot {
     flex-grow: 1;
     border: none;
     width: 100%;
+    background-color: var(--clr-background-main); /* Ensure background is visible */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Add subtle inset shadow */
 }
 
-/* Basic Menu Styling (for K12 example) */
 #menu-content {
     position: absolute;
     top: 60px;
     right: 20px;
-    background: var(--clr-background-card); /* Use card background */
+    background: var(--clr-background-card);
     border: 1px solid var(--clr-border-light);
     padding: 10px;
     border-radius: 5px;
-    
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
-/* Menu item styling with dynamic text color */
 #menu-content div {
     padding: 5px 10px;
     cursor: pointer;
@@ -204,26 +185,23 @@ nav .icon-button .material-icons {
     text-align: center;
     font-weight: bold;
     transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
-    background-color: var(--clr-primary); /* Example background color */
-    color: var(--clr-text-light); /* Default to light text */
+    background-color: var(--clr-primary);
+    color: var(--clr-text-light);
 }
 
-/* Adjust text color dynamically based on background brightness */
 #menu-content div[data-dark="true"] {
-    color: var(--clr-text-light); /* Bright text for dark backgrounds */
+    color: var(--clr-text-light);
 }
 
 #menu-content div[data-dark="false"] {
-    color: var(--clr-text-dark); /* Dark text for bright backgrounds */
+    color: var(--clr-text-dark);
 }
 
-/* Hover effect for menu items */
 #menu-content div:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
 
-/* Example fallback colors for menu items */
 #menu-content div:nth-child(1) { background-color: var(--clr-primary-lighter); }
 #menu-content div:nth-child(2) { background-color: var(--clr-secondary); }
 #menu-content div:nth-child(3) { background-color: var(--clr-accent); }

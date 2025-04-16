@@ -199,13 +199,13 @@ function showK12Menu() {
         { class: 'Grade 1', age: '6-7 years', color: 'var(--clr-secondary)' },
         { class: 'Grade 2', age: '7-8 years', color: 'var(--clr-accent)' },
         { class: 'Grade 3', age: '8-9 years', color: 'var(--clr-primary)' },
-        { class: 'Grade 4', age: '9-10 years', color: 'var(--clr-secondary-darker)' },
-        { class: 'Grade 5', age: '10-11 years', color: 'var(--clr-primary-darker)' },
+        { class: 'Grade 4', age: '9-10 years', color: 'var(--clr-secondary)' },
+        { class: 'Grade 5', age: '10-11 years', color: 'var(--clr-primary)' },
         { class: 'Grade 6', age: '11-12 years', color: 'var(--clr-primary-lighter)' },
         { class: 'Grade 7', age: '12-13 years', color: 'var(--clr-secondary)' },
         { class: 'Grade 8', age: '13-14 years', color: 'var(--clr-accent)' },
         { class: 'Grade 9', age: '14-15 years', color: 'var(--clr-primary)' },
-        { class: 'Grade 10', age: '15-16 years', color: 'var(--clr-secondary-darker)' }
+        { class: 'Grade 10', age: '15-16 years', color: 'var(--clr-secondary)' }
     ];
 
     // Update the menu to dynamically set `data-dark` attribute
